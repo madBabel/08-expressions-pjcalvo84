@@ -62,7 +62,7 @@ jobs:
             - name: Sleep and Cancel
               run: sleep 20
             - name: Falling Step
-              if: ${{ github.event.inputs.fail == true }}
+              if: ${{ inputs.fail == true }}
               run: exit 1
             - name: Conditional Step - Success
               if: ${{ success() }}
