@@ -54,10 +54,11 @@ jobs:
               if: ${{ github.event.pull_request }}
               run: |
                 cat << EOF
+                ${{ toJSON(github.event.pull_request.title) }}
                 ${{ toJSON(github.event.pull_request.labels) }}
                 EOF
             - name: Bug Check
-              if: ${{ contains(github.event.pull_request.labels.*.name, 'cancelled') && contains(github.event.pull_request.title, 'fix') }}
+              if: ${{ contains(github.event.pull_request.labels.*.name, 'cancelled') && contains(github.event.pull_request.title, 'Fix') }}
               run: echo "This PR fixes a bug."
             - name: Sleep and Cancel
               run: sleep 20
